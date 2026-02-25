@@ -5,3 +5,4 @@
 The user information should be passed as a prop to the component that displays the user details.
 
 ![output](https://storage.googleapis.com/acciojob-open-file-collections/dynamic-routing_AdobeExpress.gif)
+ 
