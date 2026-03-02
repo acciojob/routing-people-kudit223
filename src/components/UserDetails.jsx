@@ -23,7 +23,7 @@ function UserDetails({ data }) {
             <p>Email: {user[0].email}</p>
             <p>Phone: {user[0].phone}</p>
             <p>Website: {user[0].website}</p>
-        </div>:<div>Loading...</div>}
+        </div>:"Loading..."}
     </div>);
 }
 
