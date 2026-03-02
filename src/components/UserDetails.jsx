@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -6,17 +7,22 @@ function UserDetails({ data }) {
     const { id } = useParams();
     const [user, setUser] = useState(null);
     useEffect(() => {
-        setUser(() => data.filter(usr => usr.id === id));
-    },[])
-
+        setUser(() =>{
+            let filterData=data.filter((item)=>item.id===Number(id));
+            return filterData;
+        });
+    },[]);
+    
+    
+    
     return (<>
         {user?<div>
             <h1>User Details</h1>
-            <p>Name: {user.name}</p>
-            <p>Username: {user.username}</p>
-            <p>Email: {user.email}</p>
-            <p>Phone: {user.phone}</p>
-            <p>Website: {user.website}</p>
+            <p>Name: {user[0].name}</p>
+            <p>Username: {user[0].username}</p>
+            <p>Email: {user[0].email}</p>
+            <p>Phone: {user[0].phone}</p>
+            <p>Website: {user[0].website}</p>
         </div>:<div>Loading...</div>}
     </>)
 }
