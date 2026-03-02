@@ -15,7 +15,7 @@ function UserDetails({ data }) {
     
     
     
-    return (<>
+    return (<div>
         {user?<div>
             <h1>User Details</h1>
             <p>Name: {user[0].name}</p>
@@ -24,7 +24,7 @@ function UserDetails({ data }) {
             <p>Phone: {user[0].phone}</p>
             <p>Website: {user[0].website}</p>
         </div>:<div>Loading...</div>}
-    </>)
+    </div>);
 }
 
 export default UserDetails;
