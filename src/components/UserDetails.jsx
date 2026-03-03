@@ -10,7 +10,7 @@ function UserDetails({ data }) {
         setTimeout( setUser(() =>{
             let filterData=data.filter((item)=>item.id===Number(id));
             return filterData;
-        }),1000)
+        }),2000)
        
     },[]);
     
