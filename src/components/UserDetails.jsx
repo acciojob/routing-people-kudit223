@@ -19,8 +19,11 @@ function UserDetails({ data }) {
       }
       return response.json();
     }).then(data=>{
-        setUser(()=>{  return {...data};})
+        setTimeout(()=>{
+            setUser(data);
         setLoading(false)
+        },100);
+        
       
     }).catch((error)=>{
       console.log(`Error: ${error.name}, message: ${error.message}`)
@@ -33,7 +36,6 @@ function UserDetails({ data }) {
     }
     
     return (<div>
-        {console.log(user)}
             <h1>User Details</h1>
             <p>Name: {user.name}</p>
             <p>Username: {user.username}</p>
