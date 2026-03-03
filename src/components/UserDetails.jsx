@@ -6,25 +6,41 @@ import { useParams } from "react-router-dom";
 function UserDetails({ data }) {
     const { id } = useParams();
     const [user, setUser] = useState(null);
+    const [loading,setLoading]=useState(true);
+
     useEffect(() => { 
-         setUser(() =>{
-            let filterData=data.filter((item)=>item.id===Number(id));
-            return filterData;
-        })
+        setLoading(true);
+        setUser(null);
+
+        fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+    .then(response=>{
+      if(!response.ok){
+        throw new Error(`HTTP Error,Status ${response.status}`);
+      }
+      return response.json();
+    }).then(data=>{
+        setUser(()=>{  return {...data};})
+        setLoading(false)
+      
+    }).catch((error)=>{
+      console.log(`Error: ${error.name}, message: ${error.message}`)
+    })      
        
-    },[]);
+    },[id]);
     
-    
+    if(loading){
+        return <div>Loading...</div>
+    }
     
     return (<div>
-        {user?<div>
+        {console.log(user)}
             <h1>User Details</h1>
-            <p>Name: {user[0].name}</p>
-            <p>Username: {user[0].username}</p>
-            <p>Email: {user[0].email}</p>
-            <p>Phone: {user[0].phone}</p>
-            <p>Website: {user[0].website}</p>
-        </div>:'Loading...'}
+            <p>Name: {user.name}</p>
+            <p>Username: {user.username}</p>
+            <p>Email: {user.email}</p>
+            <p>Phone: {user.phone}</p>
+            <p>Website: {user.website}</p>
+        
     </div>);
 }
 
