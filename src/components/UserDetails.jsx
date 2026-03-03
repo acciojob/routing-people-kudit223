@@ -7,10 +7,10 @@ function UserDetails({ data }) {
     const { id } = useParams();
     const [user, setUser] = useState(null);
     useEffect(() => { 
-        setTimeout( setUser(() =>{
+         setUser(() =>{
             let filterData=data.filter((item)=>item.id===Number(id));
             return filterData;
-        }),2000)
+        })
        
     },[]);
     
