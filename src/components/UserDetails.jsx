@@ -6,11 +6,12 @@ import { useParams } from "react-router-dom";
 function UserDetails({ data }) {
     const { id } = useParams();
     const [user, setUser] = useState(null);
-    useEffect(() => {
-        setUser(() =>{
+    useEffect(() => { 
+        setTimeout( setUser(() =>{
             let filterData=data.filter((item)=>item.id===Number(id));
             return filterData;
-        });
+        }),1000)
+       
     },[]);
     
     
